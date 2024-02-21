@@ -1,33 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/scheduler.dart';
-import 'core/app_export.dart';
+import 'package:ui_flutter_course/screens/completed_screen.dart';
+import 'package:ui_flutter_course/screens/todo_screen.dart';
 
-var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+/// Flutter code sample for [BottomNavigationBar].
 
-  ///Please update theme as per your need if required.
-  ThemeHelper().changeTheme('primary');
-  runApp(MyApp());
-}
+void main() => runApp(const BottomNavigationBarExampleApp());
 
-class MyApp extends StatelessWidget {
+class BottomNavigationBarExampleApp extends StatelessWidget {
+  const BottomNavigationBarExampleApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Sizer(
-      builder: (context, orientation, deviceType) {
-        return MaterialApp(
-          theme: theme,
-          title: 'ui_flutter_course',
-          debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.todoPageContainerScreen,
-          routes: AppRoutes.routes,
-        );
-      },
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static List<Widget> _widgetOptions = <Widget>[
+    ToDoScreen(),
+    CompletedScreen()
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.format_list_bulleted_outlined),
+            label: 'All',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.check),
+            label: 'Completed',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Color(0xff9395D3),
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
