@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 's2.dart';
+
 main() {
   var y = 1;
   // var y = "1";
@@ -60,6 +62,8 @@ main() {
   // print(mul2(2, 3, 4));
   print(mul2(2, 3));
   print(mul2(2, 3, z: 4));
+
+  // var r1 = rectangle();
 }
 
 sum(x, y) {
