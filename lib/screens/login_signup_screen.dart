@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ui_flutter_course/screens/home_screen.dart';
 
 class LoginSignupScreen extends StatelessWidget {
-  final bool showSignupTexts;
+  final bool isSignup;
 
-  const LoginSignupScreen({Key? key, required this.showSignupTexts}) : super(key: key);
+  const LoginSignupScreen({Key? key, required this.isSignup}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class LoginSignupScreen extends StatelessWidget {
                   height: 10.0,
                 ),
                 Text(
-                  showSignupTexts ? "Create an account to get started" : "Sign in to continue",
+                  isSignup ? "Create an account to get started" : "Sign in to continue",
                   style: TextStyle(fontSize: 16.0),
                 ),
                 const SizedBox(
@@ -61,7 +61,7 @@ class LoginSignupScreen extends StatelessWidget {
                 ),
                 MaterialButton(
                   onPressed: () {
-                    showSignupTexts
+                    isSignup
                         ? {}
                         : Navigator.pushReplacement(
                             context,
@@ -77,7 +77,7 @@ class LoginSignupScreen extends StatelessWidget {
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Text(
-                    showSignupTexts ? "Sign up".toUpperCase() : "Sign in".toUpperCase(),
+                    isSignup ? "Sign up".toUpperCase() : "Sign in".toUpperCase(),
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
@@ -94,7 +94,7 @@ class LoginSignupScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      showSignupTexts ? "Already have an account?" : "Don't have an account?",
+                      isSignup ? "Already have an account?" : "Don't have an account?",
                       style: TextStyle(fontSize: 16.0),
                     ),
                     const SizedBox(
@@ -106,13 +106,13 @@ class LoginSignupScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => LoginSignupScreen(
-                              showSignupTexts: !showSignupTexts,
+                              isSignup: !isSignup,
                             ),
                           ),
                         );
                       },
                       child: Text(
-                        showSignupTexts ? "LOG IN" : "SIGN UP",
+                        isSignup ? "LOG IN" : "SIGN UP",
                         style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.0),
                       ),
                     ),
