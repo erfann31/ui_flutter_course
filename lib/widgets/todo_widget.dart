@@ -14,10 +14,10 @@ class TodoWidget extends StatelessWidget {
       elevation: 4,
       margin: EdgeInsets.symmetric(vertical: 10),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        padding: EdgeInsets.all(20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -28,7 +28,7 @@ class TodoWidget extends StatelessWidget {
                   "TODO TITLE",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
-                    fontSize: 18,
+                    fontSize: 17,
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
@@ -36,7 +36,7 @@ class TodoWidget extends StatelessWidget {
                 Text(
                   "TODO SUB TITLE",
                   style: TextStyle(
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w400,
                     fontSize: 12,
                     color: Colors.black,
                   ),
@@ -45,6 +45,7 @@ class TodoWidget extends StatelessWidget {
             ),
             if (showIconsRow)
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconButton(
                     onPressed: () {
@@ -63,7 +64,6 @@ class TodoWidget extends StatelessWidget {
                       size: 24,
                     ),
                   ),
-                  SizedBox(width: 16),
                   IconButton(
                     onPressed: () {},
                     icon: Icon(
@@ -72,7 +72,6 @@ class TodoWidget extends StatelessWidget {
                       size: 24,
                     ),
                   ),
-                  SizedBox(width: 16),
                   IconButton(
                     onPressed: () {},
                     icon: Icon(
