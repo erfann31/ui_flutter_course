@@ -4,7 +4,7 @@ import 'package:ui_flutter_course/screens/home_screen.dart';
 class LoginSignupScreen extends StatelessWidget {
   final bool isSignup;
 
-  const LoginSignupScreen({Key? key, required this.isSignup}) : super(key: key);
+  const LoginSignupScreen({required this.isSignup});
 
   @override
   Widget build(BuildContext context) {
