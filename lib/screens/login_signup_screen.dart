@@ -62,7 +62,7 @@ class LoginSignupScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     if (isSignup) {
-                      // Perform sign-up action
+                      // todo
                     } else {
                       Navigator.pushReplacement(
                         context,
@@ -87,7 +87,6 @@ class LoginSignupScreen extends StatelessWidget {
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
                         color: Colors.white
-
                     ),
                   ),
                 ),
