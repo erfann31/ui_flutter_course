@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TutorialHome extends StatelessWidget {
-  const TutorialHome({super.key});
+class ScafoldExample extends StatelessWidget {
+  const ScafoldExample({super.key});
 
   @override
   Widget build(BuildContext context) {
