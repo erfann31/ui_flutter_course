@@ -11,7 +11,6 @@ class CompletedScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
-        elevation: 0,
         backgroundColor: Theme.of(context).primaryColor,
         title: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -37,17 +36,14 @@ class CompletedScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Expanded(
-        child: ListView.builder(
-          padding: EdgeInsets.all(10),
-          shrinkWrap: true,
-          itemCount: 10,
-          itemBuilder: (BuildContext context, int index) {
-            return TodoWidget(
-              showIconsRow: false,
-            );
-          },
-        ),
+      body: ListView.builder(
+        padding: EdgeInsets.all(10),
+        itemCount: 10,
+        itemBuilder: (BuildContext context, int index) {
+          return TodoWidget(
+            showIconsRow: false,
+          );
+        },
       ),
     );
   }
