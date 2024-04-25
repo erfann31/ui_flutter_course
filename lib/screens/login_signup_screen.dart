@@ -59,33 +59,37 @@ class LoginSignupScreen extends StatelessWidget {
                 const SizedBox(
                   height: 40.0,
                 ),
-                MaterialButton(
+                ElevatedButton(
                   onPressed: () {
-                    isSignup
-                        ? {}
-                        : Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomeScreen(),
-                            ),
-                          );
+                    if (isSignup) {
+                      // Perform sign-up action
+                    } else {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                    }
                   },
-                  color: Theme.of(context).primaryColor,
-                  elevation: 8,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).primaryColor,
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    minimumSize: Size(double.infinity, 70),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Text(
                     isSignup ? "Sign up".toUpperCase() : "Sign in".toUpperCase(),
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
+                        color: Colors.white
+
                     ),
                   ),
-                  textColor: Colors.white,
-                  height: 70,
-                  minWidth: double.infinity,
                 ),
                 const SizedBox(
                   height: 40.0,

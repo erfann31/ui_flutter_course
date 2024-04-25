@@ -12,12 +12,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   void onBackTodo() {
     setState(() {
       _selectedIndex = 0;
@@ -41,7 +35,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Theme.of(context).primaryColor,
-        onTap: _onItemTapped,
+        onTap: (index){
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
       ),
     );
   }

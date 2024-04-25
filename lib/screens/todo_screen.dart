@@ -34,7 +34,7 @@ class ToDoScreen extends StatelessWidget {
           padding: EdgeInsets.all(10),
           shrinkWrap: true,
           itemCount: 4,
-          itemBuilder: (BuildContext context, int index) {
+          itemBuilder: (BuildContext context, index) {
             return TodoWidget(
               showIconsRow: true,
             );
