@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_course/screens/add_edit_todo_screen.dart';
+import 'package:ui_flutter_course/model/consts.dart';
+import 'package:ui_flutter_course/model/entities/task_model.dart';
+import 'package:ui_flutter_course/view/screens/add_edit_todo_screen.dart';
 
-class TodoWidget extends StatelessWidget {
+class TodoWidget extends StatefulWidget {
   final bool showIconsRow;
+  final Task task;
+  final VoidCallback onDelete;
+  final VoidCallback onComplete;
+  TodoWidget({required this.showIconsRow, required this.task, required this.onDelete, required this.onComplete});
 
-  TodoWidget({required this.showIconsRow});
+  @override
+  State<TodoWidget> createState() => _TodoWidgetState();
+}
 
+class _TodoWidgetState extends State<TodoWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: () {},
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
@@ -32,7 +41,7 @@ class TodoWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "TODO TITLE",
+                    widget.task.title,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 17,
@@ -41,7 +50,7 @@ class TodoWidget extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    "TODO SUB TITLE",
+                    widget.task.description,
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 12,
@@ -50,7 +59,7 @@ class TodoWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              if (showIconsRow)
+              if (widget.showIconsRow)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -72,7 +81,7 @@ class TodoWidget extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: widget.onDelete,
                       icon: Icon(
                         Icons.delete_outline,
                         color: Theme.of(context).primaryColor,
@@ -80,7 +89,7 @@ class TodoWidget extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: widget.onComplete,
                       icon: Icon(
                         Icons.check_circle_outlined,
                         color: Theme.of(context).primaryColor,
