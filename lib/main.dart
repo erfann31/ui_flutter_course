@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_course/screens/login_signup_screen.dart';
-import 'package:ui_flutter_course/screens/home_screen.dart';
+import 'package:ui_flutter_course/view/screens/login_signup_screen.dart';
 
 void main() => runApp(
       MaterialApp(
