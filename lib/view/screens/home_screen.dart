@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_course/screens/completed_screen.dart';
-import 'package:ui_flutter_course/screens/todo_screen.dart';
+import 'package:ui_flutter_course/view/screens/completed_screen.dart';
+import 'package:ui_flutter_course/view/screens/todo_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
