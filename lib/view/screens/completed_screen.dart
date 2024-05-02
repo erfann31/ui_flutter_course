@@ -46,6 +46,14 @@ class _CompletedScreenState extends State<CompletedScreen> {
           padding: const EdgeInsets.only(left: 12.0),
           child: GestureDetector(
             onTap: widget.onBack,
+            // {
+            // Navigator.push(
+            // context,
+            // MaterialPageRoute(
+            // builder: (context) => HomeScreen(),
+            // ),
+            // );
+            // }
             child: Icon(
               Icons.arrow_back,
               color: Colors.white,
