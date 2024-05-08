@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ui_flutter_course/model/consts.dart';
-import 'package:ui_flutter_course/model/viewModel/task_viewmodel.dart';
 import 'package:ui_flutter_course/view/screens/add_edit_todo_screen.dart';
 import 'package:ui_flutter_course/view/widgets/todo_widget.dart';
 
@@ -18,6 +17,34 @@ class _ToDoScreenState extends State<ToDoScreen> {
 
   Future<void> fetchUncompletedTasks() async {
     await viewModel.getUnCompleteTasks();
+    setState(() {});
+  }
+
+  Future<void> onCreate(task) async {
+    try {
+      await viewModel.addTask(task);
+      Navigator.pop(context);
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("An error occurred while creating a new task: $error"),
+        ),
+      );
+    }
+    setState(() {});
+  }
+
+  Future<void> onEdit(task) async {
+    try {
+      await viewModel.editTask(task);
+      Navigator.pop(context);
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("An error occurred while creating a new task: $error"),
+        ),
+      );
+    }
     setState(() {});
   }
 
@@ -49,23 +76,27 @@ class _ToDoScreenState extends State<ToDoScreen> {
       ),
       body: viewModel.unCompletedTasks.isEmpty // Check if completedTasks is empty
           ? Center(child: CircularProgressIndicator()) // Show loading indicator if tasks are being fetched
-          : ListView.builder(
-              itemCount: viewModel.unCompletedTasks.length,
-              itemBuilder: (context, index) {
-                final task = viewModel.unCompletedTasks[index];
-                return TodoWidget(
-                  task: task,
-                  showIconsRow: true,
-                  onDelete: () async {
-                    await viewModel.deleteTask(task);
-                    setState(() {});
-                  },
-                  onComplete: () async {
-                    await viewModel.completeTask(task);
-                    setState(() {});
-                  },
-                );
-              },
+          : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
+                itemCount: viewModel.unCompletedTasks.length,
+                itemBuilder: (context, index) {
+                  final task = viewModel.unCompletedTasks[index];
+                  return TodoWidget(
+                    task: task,
+                    showIconsRow: true,
+                    onEdit: onEdit,
+                    onDelete: () async {
+                      await viewModel.deleteTask(task);
+                      setState(() {});
+                    },
+                    onComplete: () async {
+                      await viewModel.completeTask(task);
+                      setState(() {});
+                    },
+                  );
+                },
+              ),
             ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -80,6 +111,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => AddEditTodoScreen(
+                    onCreate: onCreate,
                     isEdit: false,
                   ),
                 ),
