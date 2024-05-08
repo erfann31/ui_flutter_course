@@ -29,14 +29,13 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text("Enter valid email address and password with at least 3 char"),
-
           ),
         );
       } else {
         setState(() {
           isLoading = true;
         });
-        User user = User(email: _emailController.text.trim(), password: _passwordController.text.trim());
+        User user = User(email: _emailController.text.trim().toLowerCase(), password: _passwordController.text.trim());
         try {
           String? errorMessage = await _repository.login(user);
           print(errorMessage);
@@ -82,10 +81,9 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
         setState(() {
           isLoading = true;
         });
-        User user = User(email: _emailController.text.trim(), password: _passwordController.text.trim());
+        User user = User(email: _emailController.text.trim().toLowerCase(), password: _passwordController.text.trim());
         try {
           String? errorSignup = await _repository.signup(user);
-          String? errorLogin = await _repository.login(user);
           if (errorSignup == null) {
             Navigator.pushReplacement(
               context,
