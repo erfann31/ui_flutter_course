@@ -64,18 +64,21 @@ class _CompletedScreenState extends State<CompletedScreen> {
       ),
       body: viewModel.completedTasks.isEmpty // Check if completedTasks is empty
           ? Center(child: CircularProgressIndicator()) // Show loading indicator if tasks are being fetched
-          : ListView.builder(
-              itemCount: viewModel.completedTasks.length,
-              itemBuilder: (context, index) {
-                final task = viewModel.completedTasks[index];
-                return TodoWidget(
-                  task: task,
-                  showIconsRow: false,
-                  onDelete: () {},
-                  onComplete: () {},
-                );
-              },
-            ),
+          : Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView.builder(
+                itemCount: viewModel.completedTasks.length,
+                itemBuilder: (context, index) {
+                  final task = viewModel.completedTasks[index];
+                  return TodoWidget(
+                    task: task,
+                    showIconsRow: false,
+                    onDelete: () {},
+                    onComplete: () {},
+                  );
+                },
+              ),
+          ),
     );
   }
 }
