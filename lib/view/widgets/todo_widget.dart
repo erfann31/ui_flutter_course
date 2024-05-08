@@ -8,7 +8,9 @@ class TodoWidget extends StatefulWidget {
   final Task task;
   final VoidCallback onDelete;
   final VoidCallback onComplete;
-  TodoWidget({required this.showIconsRow, required this.task, required this.onDelete, required this.onComplete});
+  final Function(Task task)? onEdit;
+  TodoWidget(
+      {required this.showIconsRow, required this.task, required this.onDelete, required this.onComplete, this.onEdit});
 
   @override
   State<TodoWidget> createState() => _TodoWidgetState();
@@ -70,6 +72,10 @@ class _TodoWidgetState extends State<TodoWidget> {
                           MaterialPageRoute(
                             builder: (context) => AddEditTodoScreen(
                               isEdit: true,
+                              task: widget.task,
+                              onEdit: (Task task) async {
+                                await widget.onEdit?.call(task);
+                              },
                             ),
                           ),
                         );
