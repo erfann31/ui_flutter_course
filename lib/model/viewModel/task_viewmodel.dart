@@ -26,13 +26,13 @@ class TaskViewModel extends ChangeNotifier {
   }
 
   Future<void> deleteTask(Task task) async {
-    await repository.deleteTask(task.id);
+    await repository.deleteTask(task.id!);
     unCompletedTasks.remove(task);
     notifyListeners();
   }
 
   Future<void> completeTask(Task task) async {
-    await repository.completeTask(task.id);
+    await repository.completeTask(task.id!);
     unCompletedTasks.remove(task);
     completedTasks.add(task);
     notifyListeners();
