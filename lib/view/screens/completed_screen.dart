@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ui_flutter_course/model/consts.dart';
-import 'package:ui_flutter_course/model/viewModel/task_viewmodel.dart';
 import 'package:ui_flutter_course/view/widgets/todo_widget.dart';
 
 class CompletedScreen extends StatefulWidget {
@@ -28,7 +28,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 80,
+        toolbarHeight: 80.h,
         backgroundColor: Theme.of(context).primaryColor,
         title: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -37,13 +37,13 @@ class _CompletedScreenState extends State<CompletedScreen> {
             style: TextStyle(
               fontWeight: FontWeight.w700,
               fontStyle: FontStyle.normal,
-              fontSize: 24,
+              fontSize: 24.sp,
               color: Colors.white,
             ),
           ),
         ),
         leading: Padding(
-          padding: const EdgeInsets.only(left: 12.0),
+          padding:  EdgeInsets.only(left: 12.0.w),
           child: GestureDetector(
             onTap: widget.onBack,
             // {
@@ -57,15 +57,15 @@ class _CompletedScreenState extends State<CompletedScreen> {
             child: Icon(
               Icons.arrow_back,
               color: Colors.white,
-              size: 36,
+              size: 36.sp,
             ),
           ),
         ),
       ),
-      body: viewModel.completedTasks.isEmpty // Check if completedTasks is empty
-          ? Center(child: CircularProgressIndicator()) // Show loading indicator if tasks are being fetched
+      body: viewModel.completedTasks.isEmpty
+          ? Center(child: CircularProgressIndicator())
           : Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding:  EdgeInsets.all(8.0.r),
             child: ListView.builder(
                 itemCount: viewModel.completedTasks.length,
                 itemBuilder: (context, index) {
@@ -73,8 +73,6 @@ class _CompletedScreenState extends State<CompletedScreen> {
                   return TodoWidget(
                     task: task,
                     showIconsRow: false,
-                    onDelete: () {},
-                    onComplete: () {},
                   );
                 },
               ),
