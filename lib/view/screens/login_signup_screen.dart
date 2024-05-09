@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ui_flutter_course/model/entities/user_model.dart';
 import 'package:ui_flutter_course/model/repositories/account_repository.dart';
 import 'package:ui_flutter_course/view/screens/home_screen.dart';
@@ -18,14 +19,16 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
   final StoreRepository _repository = StoreRepository();
   bool isLoading = false;
   void _handleLogin() async {
-    if (_emailController.text.trim() == "" || _passwordController.text.trim() == "") {
+    if (_emailController.text.trim() == ""
+        || _passwordController.text.trim() == "") {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Please fill all of text fields"),
         ),
       );
     } else {
-      if (!_emailController.text.trim().contains("@") || _passwordController.text.trim().length < 3) {
+      if (!_emailController.text.trim().contains("@")
+          || _passwordController.text.trim().length < 3) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text("Enter valid email address and password with at least 3 char"),
@@ -35,7 +38,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
         setState(() {
           isLoading = true;
         });
-        User user = User(email: _emailController.text.trim().toLowerCase(), password: _passwordController.text.trim());
+        User user = User(
+          email: _emailController.text.trim().toLowerCase(),
+          password: _passwordController.text.trim(),
+        );
         try {
           String? errorMessage = await _repository.login(user);
           print(errorMessage);
@@ -81,7 +87,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
         setState(() {
           isLoading = true;
         });
-        User user = User(email: _emailController.text.trim().toLowerCase(), password: _passwordController.text.trim());
+        User user = User(
+          email: _emailController.text.trim().toLowerCase(),
+          password: _passwordController.text.trim(),
+        );
         try {
           String? errorSignup = await _repository.signup(user);
           if (errorSignup == null) {
@@ -115,32 +124,36 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(20.r),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Center(
                   child: FlutterLogo(
-                    size: 150,
+                    size: 150.r,
                   ),
                 ),
-                const SizedBox(
-                  height: 60.0,
+                SizedBox(
+                  height: 60.0.h,
                 ),
-                const Text(
+                Text(
                   "Welcome Back",
-                  style: TextStyle(fontSize: 28.0),
+                  style: TextStyle(
+                    fontSize: 28.0.sp,
+                  ),
                 ),
-                const SizedBox(
-                  height: 10.0,
+                SizedBox(
+                  height: 10.0.h,
                 ),
                 Text(
                   widget.isSignup ? "Create an account to get started" : "Sign in to continue",
-                  style: TextStyle(fontSize: 16.0),
+                  style: TextStyle(
+                    fontSize: 16.0.sp,
+                  ),
                 ),
-                const SizedBox(
-                  height: 30.0,
+                SizedBox(
+                  height: 30.0.h,
                 ),
                 TextField(
                   controller: _emailController,
@@ -151,8 +164,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     hintStyle: TextStyle(color: Colors.grey),
                   ),
                 ),
-                const SizedBox(
-                  height: 10.0,
+                SizedBox(
+                  height: 10.0.h,
                 ),
                 TextField(
                   controller: _passwordController,
@@ -163,8 +176,8 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     hintStyle: TextStyle(color: Colors.grey),
                   ),
                 ),
-                const SizedBox(
-                  height: 40.0,
+                SizedBox(
+                  height: 40.0.h,
                 ),
                 ElevatedButton(
                   onPressed: widget.isSignup ? _handleSignup : _handleLogin,
@@ -172,10 +185,13 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                     backgroundColor: Theme.of(context).primaryColor,
                     elevation: 8,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(16.r),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    minimumSize: Size(double.infinity, 70),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16.h,
+                      vertical: 8.w,
+                    ),
+                    minimumSize: Size(double.infinity, 0.085.sh),
                   ),
                   child: isLoading
                       ? Center(
@@ -185,21 +201,25 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                         )
                       : Text(
                           widget.isSignup ? "Sign up".toUpperCase() : "Sign in".toUpperCase(),
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white),
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
                         ),
                 ),
-                const SizedBox(
-                  height: 40.0,
+                SizedBox(
+                  height: 40.0.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       widget.isSignup ? "Already have an account?" : "Don't have an account?",
-                      style: TextStyle(fontSize: 16.0),
+                      style: TextStyle(fontSize: 16.0.sp),
                     ),
-                    const SizedBox(
-                      width: 10.0,
+                    SizedBox(
+                      width: 10.0.w,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -214,7 +234,10 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                       },
                       child: Text(
                         widget.isSignup ? "LOG IN" : "SIGN UP",
-                        style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.0),
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 16.0.sp,
+                        ),
                       ),
                     ),
                   ],
