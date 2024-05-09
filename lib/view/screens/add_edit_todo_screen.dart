@@ -170,7 +170,7 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                             backgroundColor: Theme.of(context).primaryColor,
                             elevation: 8,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16.sp),
+                              borderRadius: BorderRadius.circular(16.r),
                             ),
                             padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.w),
                             minimumSize: Size(0.38.sw, 0.08.sh),
@@ -192,7 +192,7 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                             backgroundColor: Theme.of(context).primaryColor,
                             elevation: 8,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16.sp),
+                              borderRadius: BorderRadius.circular(16.r),
                             ),
                             padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.w),
                             minimumSize: Size(0.38.sw, 0.08.sh),
@@ -214,7 +214,7 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                         backgroundColor: Theme.of(context).primaryColor,
                         elevation: 8,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.sp),
+                          borderRadius: BorderRadius.circular(16.r),
                         ),
                         padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.w),
                         minimumSize: Size(double.infinity, 0.085.sh),
