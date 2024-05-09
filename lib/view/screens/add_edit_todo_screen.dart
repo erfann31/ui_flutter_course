@@ -8,7 +8,12 @@ class AddEditTodoScreen extends StatefulWidget {
   final Function(Task task)? onCreate;
   final Function(Task task)? onEdit;
 
-  AddEditTodoScreen({required this.isEdit, this.task, this.onCreate, this.onEdit});
+  AddEditTodoScreen({
+    required this.isEdit,
+    this.task,
+    this.onCreate,
+    this.onEdit,
+  });
 
   @override
   State<AddEditTodoScreen> createState() => _AddEditTodoScreenState();
@@ -39,7 +44,10 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
         ),
       );
     } else {
-      Task task = Task(title: titleController.text.trim(), description: descController.text.trim());
+      Task task = Task(
+        title: titleController.text.trim(),
+        description: descController.text.trim(),
+      );
       try {
         await widget.onCreate?.call(task);
       } catch (error) {
@@ -67,8 +75,11 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
         ),
       );
     } else {
-      Task task =
-          Task(id: widget.task?.id, title: titleController.text.trim(), description: descController.text.trim());
+      Task task = Task(
+        id: widget.task?.id,
+        title: titleController.text.trim(),
+        description: descController.text.trim(),
+      );
       try {
         await widget.onEdit?.call(task);
       } catch (error) {
@@ -136,7 +147,10 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                   fontSize: 14.sp,
                   color: Colors.grey,
                 ),
-                contentPadding: EdgeInsets.symmetric(vertical: 8.w, horizontal: 12.h),
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: 8.w,
+                  horizontal: 12.h,
+                ),
               ),
             ),
             Padding(
@@ -154,7 +168,10 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                     fontSize: 14.sp,
                     color: Colors.grey,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 8.w, horizontal: 12.h),
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 8.w,
+                    horizontal: 12.h,
+                  ),
                 ),
               ),
             ),
@@ -172,7 +189,10 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.r),
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.w),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 16.h,
+                              vertical: 8.w,
+                            ),
                             minimumSize: Size(0.38.sw, 0.08.sh),
                           ),
                           child: isLoading
@@ -181,7 +201,11 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                                 )
                               : Text(
                                   "Update",
-                                  style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, color: Colors.white),
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
                                 ),
                         ),
                         ElevatedButton(
@@ -194,7 +218,10 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.r),
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.w),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 16.h,
+                              vertical: 8.w,
+                            ),
                             minimumSize: Size(0.38.sw, 0.08.sh),
                           ),
                           child: Text(
@@ -216,7 +243,10 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.r),
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.w),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 16.h,
+                          vertical: 8.w,
+                        ),
                         minimumSize: Size(double.infinity, 0.085.sh),
                       ),
                       child: isLoading
