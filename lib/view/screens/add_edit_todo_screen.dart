@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_flutter_course/model/consts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ui_flutter_course/model/entities/task_model.dart';
 
 class AddEditTodoScreen extends StatefulWidget {
@@ -90,23 +90,23 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        toolbarHeight: 80,
+        toolbarHeight: 80.h,
         elevation: 0,
         backgroundColor: Theme.of(context).primaryColor,
         title: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(12.0.r),
           child: Text(
             widget.isEdit ? "Edit Task" : "Add Task",
             style: TextStyle(
               fontWeight: FontWeight.w700,
               fontStyle: FontStyle.normal,
-              fontSize: 24,
+              fontSize: 24.sp,
               color: Colors.white,
             ),
           ),
         ),
         leading: Padding(
-          padding: const EdgeInsets.only(left: 12.0),
+          padding: EdgeInsets.only(left: 12.0.w),
           child: GestureDetector(
             onTap: () {
               Navigator.pop(context);
@@ -114,52 +114,52 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
             child: Icon(
               Icons.arrow_back,
               color: Colors.white,
-              size: 36,
+              size: 36.sp,
             ),
           ),
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(20.r),
         child: Column(
           children: [
             TextField(
               controller: titleController,
               style: TextStyle(
                 fontWeight: FontWeight.w400,
-                fontSize: 14,
+                fontSize: 14.sp,
               ),
               decoration: InputDecoration(
                 hintText: "Title",
                 hintStyle: TextStyle(
                   fontWeight: FontWeight.w400,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   color: Colors.grey,
                 ),
-                contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                contentPadding: EdgeInsets.symmetric(vertical: 8.w, horizontal: 12.h),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20),
+              padding: EdgeInsets.only(top: 20.h),
               child: TextField(
                 controller: descController,
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                 ),
                 decoration: InputDecoration(
                   hintText: "Detail",
                   hintStyle: TextStyle(
                     fontWeight: FontWeight.w400,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: Colors.grey,
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  contentPadding: EdgeInsets.symmetric(vertical: 8.w, horizontal: 12.h),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 40),
+              padding: EdgeInsets.only(top: 40.h),
               child: widget.isEdit
                   ? Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,10 +170,10 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                             backgroundColor: Theme.of(context).primaryColor,
                             elevation: 8,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(16.sp),
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                            minimumSize: Size(175, 70),
+                            padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.w),
+                            minimumSize: Size(0.38.sw, 0.08.sh),
                           ),
                           child: isLoading
                               ? CircularProgressIndicator(
@@ -181,7 +181,7 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                                 )
                               : Text(
                                   "Update",
-                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
+                                  style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, color: Colors.white),
                                 ),
                         ),
                         ElevatedButton(
@@ -192,15 +192,15 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                             backgroundColor: Theme.of(context).primaryColor,
                             elevation: 8,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(16.sp),
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                            minimumSize: Size(175, 70),
+                            padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.w),
+                            minimumSize: Size(0.38.sw, 0.08.sh),
                           ),
                           child: Text(
                             "Cancel",
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
                             ),
@@ -214,10 +214,10 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                         backgroundColor: Theme.of(context).primaryColor,
                         elevation: 8,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(16.sp),
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        minimumSize: Size(double.infinity, 70),
+                        padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.w),
+                        minimumSize: Size(double.infinity, 0.085.sh),
                       ),
                       child: isLoading
                           ? CircularProgressIndicator(
@@ -226,7 +226,7 @@ class _AddEditTodoScreenState extends State<AddEditTodoScreen> {
                           : Text(
                               "ADD",
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 20.sp,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,
                               ),
