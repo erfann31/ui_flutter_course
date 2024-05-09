@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ui_flutter_course/model/consts.dart';
 import 'package:ui_flutter_course/view/screens/add_edit_todo_screen.dart';
 import 'package:ui_flutter_course/view/widgets/todo_widget.dart';
@@ -52,15 +53,15 @@ class _ToDoScreenState extends State<ToDoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 80,
+        toolbarHeight: 80.h,
         backgroundColor: Theme.of(context).primaryColor,
         title: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(12.0.r),
           child: Text(
             "TODO APP",
             style: TextStyle(
               fontWeight: FontWeight.w700,
-              fontSize: 24,
+              fontSize: 24.sp,
               color: Colors.white,
             ),
           ),
@@ -68,16 +69,20 @@ class _ToDoScreenState extends State<ToDoScreen> {
         actions: [
           Padding(
             padding: EdgeInsets.only(
-              right: 20,
+              right: 20.r,
             ),
-            child: Icon(Icons.calendar_today_outlined, color: Colors.white, size: 32),
+            child: Icon(
+              Icons.calendar_today_outlined,
+              color: Colors.white,
+              size: 32.sp,
+            ),
           ),
         ],
       ),
-      body: viewModel.unCompletedTasks.isEmpty // Check if completedTasks is empty
-          ? Center(child: CircularProgressIndicator()) // Show loading indicator if tasks are being fetched
+      body: viewModel.unCompletedTasks.isEmpty
+          ? Center(child: CircularProgressIndicator())
           : Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0.r),
               child: ListView.builder(
                 itemCount: viewModel.unCompletedTasks.length,
                 itemBuilder: (context, index) {
@@ -99,10 +104,10 @@ class _ToDoScreenState extends State<ToDoScreen> {
               ),
             ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: EdgeInsets.all(12.0.r),
         child: Container(
-          width: 75,
-          height: 75,
+          width: 75.w,
+          height: 75.h,
           child: FloatingActionButton(
             elevation: 5,
             shape: CircleBorder(),
@@ -121,7 +126,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
             child: Icon(
               Icons.add,
               color: Colors.white,
-              size: 32,
+              size: 32.sp,
             ),
           ),
         ),
